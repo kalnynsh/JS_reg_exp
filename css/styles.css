@@ -153,3 +153,7 @@ body {
 .accent-text {
   color: #006cc9;
 }
+
+.error {
+  color: red;
+}
