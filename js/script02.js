@@ -24,6 +24,9 @@ function iSemailValid(str) {
 inputName.addEventListener("change", validateName);
 inputName.addEventListener("focus", resetName);
 
+/** 
+ * validateName - function for validation name's input
+ */
 function validateName() {
   if (!iSnameValid(inputName.value)) {
     inputName.classList.add("error");
@@ -33,6 +36,10 @@ function validateName() {
   }
 }
 
+/**
+ * resetName - function for reset input field with name
+ * 
+ */
 function resetName() {
   if (inputName.classList.contains("error")) {
     // сбросить состояние "ошибка", если оно есть
