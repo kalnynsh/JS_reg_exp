@@ -20,7 +20,7 @@ function iSemailValid(str) {
   var reg = /\w+\.?-?\w+@mail\.ru/;
   return reg.test(str);
 }
-
+// Name validation begin
 inputName.addEventListener("change", validateName);
 inputName.addEventListener("focus", resetName);
 
@@ -47,3 +47,34 @@ function resetName() {
     document.getElementById("nameError").textContent = "";
   }
 }
+// Name validation end
+
+// Phone number validation begin
+phone.addEventListener("change", validatePhone);
+phone.addEventListener("focus", resetPhone);
+
+/** 
+ * validatePhone - function for validation phone number
+ * 
+ */
+function validatePhone() {
+  if (!iSphoneValid(phone.value)) {
+    phone.classList.add("error");
+    var errorEl = document.getElementById("phoneError");
+    errorEl.classList.add("error");
+    errorEl.textContent = "Phone number not valid. Please correct it.";
+  }
+}
+
+/**
+ * resetPhone - function for reset input field with phone
+ * 
+ */
+function resetPhone() {
+  if (phone.classList.contains("error")) {
+    // сбросить состояние "ошибка", если оно есть
+    phone.classList.remove("error");
+    document.getElementById("phoneError").textContent = "";
+  }
+}
+// Phone number validation end
