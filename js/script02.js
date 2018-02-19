@@ -4,7 +4,7 @@ var form = document.forms.form01;
 var inputName = form.elements.inputName;
 var phone = form.elements.phone;
 var email = form.elements.email;
-var button = form.elements.btnSubmit;
+// var button = form.elements.btnSubmit;
 
 function iSnameValid(str) {
   var reg = /[a-zа-яё\D]{3,}\s*?/i;
@@ -32,7 +32,7 @@ function validateName() {
     inputName.classList.add("error");
     var errorEl = document.getElementById("nameError");
     errorEl.classList.add("error");
-    errorEl.textContent = "Name not valid. Please correct it.";
+    errorEl.textContent = "Name is not valid. Please correct it.";
   }
 }
 
@@ -62,7 +62,7 @@ function validatePhone() {
     phone.classList.add("error");
     var errorEl = document.getElementById("phoneError");
     errorEl.classList.add("error");
-    errorEl.textContent = "Phone number not valid. Please correct it.";
+    errorEl.textContent = "Phone number is not valid. Please correct it.";
   }
 }
 
@@ -78,3 +78,34 @@ function resetPhone() {
   }
 }
 // Phone number validation end
+
+// Email input validation begin
+email.addEventListener("change", validateEmail);
+email.addEventListener("focus", resetEmail);
+
+/** 
+ * validateEmail - function for validation email input
+ * 
+ */
+function validateEmail() {
+  if (!iSemailValid(email.value)) {
+    email.classList.add("error");
+    var errorEl = document.getElementById("emailError");
+    errorEl.classList.add("error");
+    errorEl.textContent = "Email input is not valid. Please correct it.";
+  }
+}
+
+/**
+ * resetEmail - function
+ * for reset input field with email
+ * 
+ */
+function resetEmail() {
+  if (email.classList.contains("error")) {
+    // сбросить состояние "ошибка", если оно есть
+    email.classList.remove("error");
+    document.getElementById("emailError").textContent = "";
+  }
+}
+// Email input validation end
